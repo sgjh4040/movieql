@@ -1,0 +1,17 @@
+type Movie {
+    id: Int!
+    title: String!
+    genre_ids: [String]
+    overview: String
+    poster_path: String
+
+
+
+}
+
+type Query{
+    movies(page:Int):[Movie]!
+    movie(id:Int!): Movie
+    suggestions(id:Int!):[Movie]!
+    
+}
