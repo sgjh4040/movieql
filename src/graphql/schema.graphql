@@ -4,8 +4,10 @@ type Movie {
     genre_ids: [String]
     overview: String
     poster_path: String
-
-
+    background_path: String
+    vote_average: String
+    runtime: String
+    release_date: String
 
 }
 
