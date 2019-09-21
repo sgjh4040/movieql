@@ -58,3 +58,16 @@ export const getCredits = async id =>{
     });
     return cast
 }
+export const getVideos = async id =>{
+    const {
+        data:{
+            cast
+        }
+    }= await axios(`${DETAIL_API_URL}/${id}/videos`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            language: "ko-kr"
+        }
+    });
+    return cast
+}

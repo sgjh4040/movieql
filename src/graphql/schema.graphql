@@ -18,11 +18,18 @@ type Person {
     character: String
 
 }
+type Video {
+    id:Int!
+    key: String
+    site: String
+    name: String
+}
 
 type Query{
     movies(page:Int):[Movie]!
     movie(id:Int!): Movie
     suggestions(id:Int!):[Movie]!
     credits(id:Int!):[Person]!
+    videos(id:Int!):[Video]!
     
 }

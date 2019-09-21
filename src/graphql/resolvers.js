@@ -1,4 +1,4 @@
-import { getMovies, getMovie, getSuggestions, getCredits } from "./db";
+import { getMovies, getMovie, getSuggestions, getCredits, getVideos } from "./db";
 
 
 const resolvers = {
@@ -6,7 +6,8 @@ const resolvers = {
         movies: (_,{page})=> getMovies(page),
         movie: (_,{id})=> getMovie(id),
         suggestions: (_,{id})=> getSuggestions(id), 
-        credits: (_,{id})=> getCredits(id)
+        credits: (_,{id})=> getCredits(id),
+        videos: (_,{id})=> getVideos(id)
     }
 }
 
