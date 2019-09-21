@@ -45,3 +45,16 @@ export const getSuggestions = async id =>{
     });
     return results;
 }
+export const getCredits = async id =>{
+    const {
+        data:{
+            cast
+        }
+    }= await axios(`${DETAIL_API_URL}/${id}/credits`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            language: "ko-kr"
+        }
+    });
+    return cast
+}

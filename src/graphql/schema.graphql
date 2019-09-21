@@ -10,10 +10,19 @@ type Movie {
     release_date: String
 
 }
+type Person {
+    id: Int!
+    gender: Int!
+    name: String!
+    profile_path: String
+    character: String
+
+}
 
 type Query{
     movies(page:Int):[Movie]!
     movie(id:Int!): Movie
     suggestions(id:Int!):[Movie]!
+    credits(id:Int!):[Person]!
     
 }
