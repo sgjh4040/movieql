@@ -19,3 +19,8 @@ graphql 서버
 
 ### 특징
 1. URL이 존재하지 않다. 하나의 endpoint(종점)만 존재할 뿐이다.
+2. 내가 원하는 정보만 가져올 수 있다. 한번에!
+
+
+### API server 주소
+ https://pacific-beyond-15227.herokuapp.com/

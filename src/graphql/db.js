@@ -2,15 +2,14 @@ import dotenv from "dotenv";
 import axios from "axios";
 dotenv.config();
 
-const API_URL = "https://api.themoviedb.org/3/movie/now_playing"
-const DETAIL_API_URL = "https://api.themoviedb.org/3/movie"
+const API_URL = "https://api.themoviedb.org/3/movie"
 
 export const getMovies = async (page) =>{
     const {
         data:{
             results
         }
-    }= await axios(API_URL,{
+    }= await axios(`${API_URL}/now_playing`,{
         params:{
             api_key:process.env.moviedbAPI,
             page,
@@ -23,7 +22,7 @@ export const getMovies = async (page) =>{
 export const getMovie = async id => {
     const {
         data
-    } = await axios(`${DETAIL_API_URL}/${id}`, {
+    } = await axios(`${API_URL}/${id}`, {
       params: {
         api_key: process.env.moviedbAPI,
         language:"ko-kr"
@@ -37,7 +36,7 @@ export const getSuggestions = async id =>{
         data:{
             results
         }
-    }= await axios(`${DETAIL_API_URL}/${id}/recommendations`,{
+    }= await axios(`${API_URL}/${id}/recommendations`,{
         params:{
             api_key:process.env.moviedbAPI,
             language: "ko-kr"
@@ -50,7 +49,7 @@ export const getCredits = async id =>{
         data:{
             cast
         }
-    }= await axios(`${DETAIL_API_URL}/${id}/credits`,{
+    }= await axios(`${API_URL}/${id}/credits`,{
         params:{
             api_key:process.env.moviedbAPI,
             language: "ko-kr"
@@ -63,11 +62,24 @@ export const getVideos = async id =>{
         data:{
             cast
         }
-    }= await axios(`${DETAIL_API_URL}/${id}/videos`,{
+    }= await axios(`${API_URL}/${id}/videos`,{
         params:{
             api_key:process.env.moviedbAPI,
             language: "ko-kr"
         }
     });
     return cast
+}
+export const getSimilars = async id => {
+    const{
+        data:{
+            results
+        }
+    }=await axios(`${API_URL}/${id}/similar`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            language:"ko-kr"
+        }
+    });
+    return results;
 }
