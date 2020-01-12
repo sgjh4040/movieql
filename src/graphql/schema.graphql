@@ -5,14 +5,25 @@ type Movie {
     overview: String
     poster_path: String
     background_path: String
+    backdrop_path: String
+    homepage: String
     vote_average: String
     runtime: String
     release_date: String
-
+    popularity: String
+    vote_count: String
+    video: Boolean
+    adult: Boolean
+    original_title: String
+    status:String
+    genres: [Genre]
 }
 type Person {
     id: Int!
+    cast_id: Int!
+    credit_id: String!
     gender: Int!
+    order: Int
     name: String!
     profile_path: String
     character: String
@@ -25,8 +36,13 @@ type Video {
     name: String
 }
 
+type Genre {
+    id: Int!
+    name: String
+}
+
 type Query{
-    movies(page:Int):[Movie]!
+    nowPlayMovies(page:Int):[Movie]!
     movie(id:Int!): Movie
     suggestions(id:Int!):[Movie]!
     credits(id:Int!):[Person]!

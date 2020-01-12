@@ -1,10 +1,27 @@
 import dotenv from "dotenv";
 import axios from "axios";
 dotenv.config();
-
 const API_URL = "https://api.themoviedb.org/3/movie"
 
-export const getMovies = async (page) =>{
+
+export const getMovies = async (page,language,category) =>{
+    const {
+        data:{
+            results
+        }
+    }= await axios(`${API_URL}/${category}`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            page,
+            language
+        }
+    });
+    console.log(results);
+    return results;
+}
+
+
+export const getNowPlayMovies = async (page) =>{
     const {
         data:{
             results
@@ -16,6 +33,52 @@ export const getMovies = async (page) =>{
             language: "ko-kr"
         }
     });
+    console.log(results);
+    return results;
+}
+export const getPopularMovies = async (page) =>{
+    const {
+        data:{
+            results
+        }
+    }= await axios(`${API_URL}/popular`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            page,
+            language: "ko-kr"
+        }
+    });
+    console.log(results);
+    return results;
+}
+export const getTopRateMovies = async (page) =>{
+    const {
+        data:{
+            results
+        }
+    }= await axios(`${API_URL}/top_rated`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            page,
+            language: "ko-kr"
+        }
+    });
+    console.log(results);
+    return results;
+}
+export const getUpcomingMovies = async (page) =>{
+    const {
+        data:{
+            results
+        }
+    }= await axios(`${API_URL}/upcoming`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            page,
+            language: "ko-kr"
+        }
+    });
+    console.log(results);
     return results;
 }
 
@@ -55,6 +118,7 @@ export const getCredits = async id =>{
             language: "ko-kr"
         }
     });
+    console.log(cast);
     return cast
 }
 export const getVideos = async id =>{
@@ -63,6 +127,19 @@ export const getVideos = async id =>{
             cast
         }
     }= await axios(`${API_URL}/${id}/videos`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            language: "ko-kr"
+        }
+    });
+    return cast
+}
+export const getImages = async id =>{
+    const {
+        data:{
+            cast
+        }
+    }= await axios(`${API_URL}/${id}/images`,{
         params:{
             api_key:process.env.moviedbAPI,
             language: "ko-kr"
@@ -82,4 +159,5 @@ export const getSimilars = async id => {
         }
     });
     return results;
+    
 }
