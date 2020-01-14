@@ -44,6 +44,7 @@ type Genre {
 type Query{
     nowPlayMovies(page:Int):[Movie]!
     movie(id:Int!): Movie
+    movies(page:Int,language:String,category:String): [Movie]!
     suggestions(id:Int!):[Movie]!
     credits(id:Int!):[Person]!
     videos(id:Int!):[Video]!
