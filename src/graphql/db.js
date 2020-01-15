@@ -13,7 +13,8 @@ export const getMovies = async (page,language,category) =>{
         params:{
             api_key:process.env.moviedbAPI,
             page,
-            language
+            language,
+            region:'KR'
         }
     });
     console.log(results);
