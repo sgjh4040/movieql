@@ -2,6 +2,8 @@ type Movie {
     id: Int!
     title: String!
     genre_ids: [String]
+    budget: String
+    revenue: String
     overview: String
     poster_path: String
     background_path: String
@@ -40,6 +42,10 @@ type Genre {
     id: Int!
     name: String
 }
+type Keyword {
+    id: Int!
+    name: String
+}
 
 type Query{
     nowPlayMovies(page:Int):[Movie]!
@@ -48,5 +54,7 @@ type Query{
     suggestions(id:Int!):[Movie]!
     credits(id:Int!):[Person]!
     videos(id:Int!):[Video]!
+    similars(id:Int!): [Movie]!
+    keywords(id:Int!): [Keyword]!
     
 }

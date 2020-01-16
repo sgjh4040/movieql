@@ -162,3 +162,17 @@ export const getSimilars = async id => {
     return results;
     
 }
+export const getKeywords = async id => {
+    const{
+        data:{
+            keywords
+        }
+    }=await axios(`${API_URL}/${id}/keywords`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            language:"ko-kr"
+        }
+    });
+    return keywords;
+    
+}
