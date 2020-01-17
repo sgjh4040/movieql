@@ -1,6 +1,6 @@
 type Movie {
     id: Int!
-    title: String!
+    title: String
     genre_ids: [String]
     budget: String
     revenue: String
@@ -20,16 +20,44 @@ type Movie {
     status:String
     genres: [Genre]
 }
+type Tv {
+    id: Int!
+    backdrop_path: String
+    created_by: [Person]
+    first_air_date: String
+    genres: [Genre]
+    homepage: String
+    in_production: Boolean
+    last_air_date: String
+    name:String
+    number_of_episodes:String
+    number_of_seasons:String
+    original_language:String
+    original_name:String
+    overview:String
+    popularity:String
+    poster_path:String
+    status:String
+    vote_average:String
+    vote_count:Int
+
+
+
+
+}
+
 type Person {
     id: Int!
-    cast_id: Int!
+    cast_id: Int
     credit_id: String!
     gender: Int!
     order: Int
     name: String!
     profile_path: String
     character: String
-
+    known_for_department:String
+    also_known_as:[String]
+    place_of_birth:String
 }
 type Video {
     id:Int!
@@ -47,6 +75,7 @@ type Keyword {
     name: String
 }
 
+
 type Query{
     nowPlayMovies(page:Int):[Movie]!
     movie(id:Int!): Movie
@@ -56,5 +85,15 @@ type Query{
     videos(id:Int!):[Video]!
     similars(id:Int!): [Movie]!
     keywords(id:Int!): [Keyword]!
+    tvs(page:Int,language:String,category:String): [Tv]!
+    searchMovies(page:Int,language:String, term:String): [Movie]
+    searchTvs(page:Int,language:String, term:String): [Tv]
+    searchPeoples(page:Int,language:String, term:String): [Person]
+    tv(id:Int!,language:String): Tv
+    tvCredits(id:Int!,language:String ):[Person]!
+    tvSuggestions(id:Int!,language:String ):[Tv]!
+    person(id:Int!, language:String): Person!
+    personMovieCredits(id:Int!, language:String): [Movie]
+    personTvCredits(id:Int!, language:String): [Tv]
     
 }

@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import axios from "axios";
 dotenv.config();
-const API_URL = "https://api.themoviedb.org/3/movie"
+const API_URL = "https://api.themoviedb.org/3"
 
 
 export const getMovies = async (page,language,category) =>{
@@ -9,7 +9,7 @@ export const getMovies = async (page,language,category) =>{
         data:{
             results
         }
-    }= await axios(`${API_URL}/${category}`,{
+    }= await axios(`${API_URL}/movie/${category}`,{
         params:{
             api_key:process.env.moviedbAPI,
             page,
@@ -27,7 +27,7 @@ export const getNowPlayMovies = async (page) =>{
         data:{
             results
         }
-    }= await axios(`${API_URL}/now_playing`,{
+    }= await axios(`${API_URL}/movie/now_playing`,{
         params:{
             api_key:process.env.moviedbAPI,
             page,
@@ -42,7 +42,7 @@ export const getPopularMovies = async (page) =>{
         data:{
             results
         }
-    }= await axios(`${API_URL}/popular`,{
+    }= await axios(`${API_URL}/movie/popular`,{
         params:{
             api_key:process.env.moviedbAPI,
             page,
@@ -57,7 +57,7 @@ export const getTopRateMovies = async (page) =>{
         data:{
             results
         }
-    }= await axios(`${API_URL}/top_rated`,{
+    }= await axios(`${API_URL}/movie/top_rated`,{
         params:{
             api_key:process.env.moviedbAPI,
             page,
@@ -72,7 +72,7 @@ export const getUpcomingMovies = async (page) =>{
         data:{
             results
         }
-    }= await axios(`${API_URL}/upcoming`,{
+    }= await axios(`${API_URL}/movie/upcoming`,{
         params:{
             api_key:process.env.moviedbAPI,
             page,
@@ -86,7 +86,7 @@ export const getUpcomingMovies = async (page) =>{
 export const getMovie = async id => {
     const {
         data
-    } = await axios(`${API_URL}/${id}`, {
+    } = await axios(`${API_URL}/movie/${id}`, {
       params: {
         api_key: process.env.moviedbAPI,
         language:"ko-kr"
@@ -100,7 +100,7 @@ export const getSuggestions = async id =>{
         data:{
             results
         }
-    }= await axios(`${API_URL}/${id}/recommendations`,{
+    }= await axios(`${API_URL}/movie/${id}/recommendations`,{
         params:{
             api_key:process.env.moviedbAPI,
             language: "ko-kr"
@@ -113,7 +113,7 @@ export const getCredits = async id =>{
         data:{
             cast
         }
-    }= await axios(`${API_URL}/${id}/credits`,{
+    }= await axios(`${API_URL}/movie/${id}/credits`,{
         params:{
             api_key:process.env.moviedbAPI,
             language: "ko-kr"
@@ -127,7 +127,7 @@ export const getVideos = async id =>{
         data:{
             cast
         }
-    }= await axios(`${API_URL}/${id}/videos`,{
+    }= await axios(`${API_URL}/movie/${id}/videos`,{
         params:{
             api_key:process.env.moviedbAPI,
             language: "ko-kr"
@@ -140,7 +140,7 @@ export const getImages = async id =>{
         data:{
             cast
         }
-    }= await axios(`${API_URL}/${id}/images`,{
+    }= await axios(`${API_URL}/movie/${id}/images`,{
         params:{
             api_key:process.env.moviedbAPI,
             language: "ko-kr"
@@ -153,7 +153,7 @@ export const getSimilars = async id => {
         data:{
             results
         }
-    }=await axios(`${API_URL}/${id}/similar`,{
+    }=await axios(`${API_URL}/movie/${id}/similar`,{
         params:{
             api_key:process.env.moviedbAPI,
             language:"ko-kr"
@@ -167,7 +167,7 @@ export const getKeywords = async id => {
         data:{
             keywords
         }
-    }=await axios(`${API_URL}/${id}/keywords`,{
+    }=await axios(`${API_URL}/movie/${id}/keywords`,{
         params:{
             api_key:process.env.moviedbAPI,
             language:"ko-kr"
@@ -175,4 +175,22 @@ export const getKeywords = async id => {
     });
     return keywords;
     
+}
+
+export const getSearchMovies = async (page=1,language,term) =>{
+    console.log(page);
+    const {
+        data:{
+            results
+        }
+    }= await axios(`${API_URL}/search/movie`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            page,
+            language,
+            region:'KR',
+            query:term
+        }
+    });
+    return results;
 }
