@@ -8,9 +8,7 @@ const API_URL = "https://api.themoviedb.org/3"
 export const getTvs = async (page = 1, language = "ko-kr", category) => {
     console.log(process.env.moviedbAPI);
     const {
-        data: {
-            results
-        }
+        data
     } = await axios(`${API_URL}/tv/${category}`, {
         params: {
             api_key: process.env.moviedbAPI,
@@ -18,8 +16,7 @@ export const getTvs = async (page = 1, language = "ko-kr", category) => {
             language
         }
     });
-    console.log(results);
-    return results;
+    return data;
 };
 export const getTv = async (id, language = "ko-kr") => {
     const {

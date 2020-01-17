@@ -79,17 +79,30 @@ type Keyword {
     name: String
 }
 
+type MovieList {
+    page: Int
+    total_results:Int
+    total_pages:Int
+    results: [Movie]
+}
+type TvList {
+    page: Int
+    total_results:Int
+    total_pages:Int
+    results: [Tv]
+}
+
 
 type Query{
     nowPlayMovies(page:Int):[Movie]!
     movie(id:Int!): Movie
-    movies(page:Int,language:String,category:String): [Movie]!
+    movies(page:Int,language:String,category:String): MovieList
     suggestions(id:Int!):[Movie]!
     credits(id:Int!):[Person]!
     videos(id:Int!):[Video]!
     similars(id:Int!): [Movie]!
     keywords(id:Int!): [Keyword]!
-    tvs(page:Int,language:String,category:String): [Tv]!
+    tvs(page:Int,language:String,category:String): TvList
     searchMovies(page:Int,language:String, term:String): [Movie]
     searchTvs(page:Int,language:String, term:String): [Tv]
     searchPeoples(page:Int,language:String, term:String): [Person]
