@@ -48,9 +48,12 @@ type Tv {
 
 type Person {
     id: Int!
+    biography: String
+    birthday: String
     cast_id: Int
     credit_id: String!
     gender: Int!
+    homepage:String
     order: Int
     name: String!
     profile_path: String
@@ -58,6 +61,7 @@ type Person {
     known_for_department:String
     also_known_as:[String]
     place_of_birth:String
+    
 }
 type Video {
     id:Int!
@@ -91,6 +95,7 @@ type Query{
     searchPeoples(page:Int,language:String, term:String): [Person]
     tv(id:Int!,language:String): Tv
     tvCredits(id:Int!,language:String ):[Person]!
+    tvKeywords(id:Int!,language:String ): [Keyword]!
     tvSuggestions(id:Int!,language:String ):[Tv]!
     person(id:Int!, language:String): Person!
     personMovieCredits(id:Int!, language:String): [Movie]

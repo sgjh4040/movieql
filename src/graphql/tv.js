@@ -59,6 +59,20 @@ export const getTvSuggestions = async (id, language = "ko-kr") =>{
     });
     return results;
 }
+export const getTvKeywords = async (id, language = "ko-kr") => {
+    const{
+        data:{
+            results
+        }
+    }=await axios(`${API_URL}/tv/${id}/keywords`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            language
+        }
+    });
+    return results;
+    
+}
 
 export const getSearchTvs = async (page = 1, language, term) => {
     console.log(page);

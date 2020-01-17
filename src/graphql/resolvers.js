@@ -1,5 +1,5 @@
 import { getNowPlayMovies, getMovie, getSuggestions, getCredits, getVideos, getMovies, getImages, getSimilars, getKeywords, getSearchMovies } from "./movie";
-import { getTvs, getSearchTvs, getTv, getTvCredits,getTvSuggestions } from "./tv";
+import { getTvs, getSearchTvs, getTv, getTvCredits,getTvSuggestions, getTvKeywords } from "./tv";
 import { getSearchPeople, getPerson, getPersonMovieCredit, getPersonTvCredit } from "./people";
 
 
@@ -17,6 +17,7 @@ const resolvers = {
         tvs: (_,{page,language,category})=> getTvs(page,language,category),
         tv: (_,{id,language}) => getTv(id,language),
         tvCredits: (_,{id, language}) => getTvCredits(id,language),
+        tvKeywords: (_,{id, language})=> getTvKeywords(id,language),
         searchTvs: (_,{page,language,term}) => getSearchTvs(page,language,term),
         searchPeoples: (_,{page,language,term}) => getSearchPeople(page,language,term),
         tvSuggestions: (_,{id, language}) => getTvSuggestions(id,language),
