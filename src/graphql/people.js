@@ -4,6 +4,8 @@ dotenv.config();
 const API_URL = "https://api.themoviedb.org/3"
 
 export const getPerson = async (id,language="ko-kr" )=> {
+    language= "en-US";
+    console.log(language);
     const {
         data
     } = await axios(`${API_URL}/person/${id}`, {

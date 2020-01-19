@@ -19,6 +19,7 @@ type Movie {
     original_title: String
     status:String
     genres: [Genre]
+    character: String
 }
 type Tv {
     id: Int!
@@ -40,6 +41,7 @@ type Tv {
     status:String
     vote_average:String
     vote_count:Int
+    character: String
 
 
 
