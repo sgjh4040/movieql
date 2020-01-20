@@ -176,7 +176,6 @@ export const getKeywords = async id => {
 }
 
 export const getSearchMovies = async (page=1,language,term) =>{
-    console.log(page);
     const {
         data:{
             results
