@@ -35,51 +35,6 @@ export const getNowPlayMovies = async (page) =>{
     console.log(results);
     return results;
 }
-export const getPopularMovies = async (page) =>{
-    const {
-        data:{
-            results
-        }
-    }= await axios(`${API_URL}/movie/popular`,{
-        params:{
-            api_key:process.env.moviedbAPI,
-            page,
-            language: "ko-kr"
-        }
-    });
-    console.log(results);
-    return results;
-}
-export const getTopRateMovies = async (page) =>{
-    const {
-        data:{
-            results
-        }
-    }= await axios(`${API_URL}/movie/top_rated`,{
-        params:{
-            api_key:process.env.moviedbAPI,
-            page,
-            language: "ko-kr"
-        }
-    });
-    console.log(results);
-    return results;
-}
-export const getUpcomingMovies = async (page) =>{
-    const {
-        data:{
-            results
-        }
-    }= await axios(`${API_URL}/movie/upcoming`,{
-        params:{
-            api_key:process.env.moviedbAPI,
-            page,
-            language: "ko-kr"
-        }
-    });
-    console.log(results);
-    return results;
-}
 
 export const getMovie = async id => {
     const {

@@ -5,7 +5,6 @@ import { getSearchPeople, getPerson, getPersonMovieCredit, getPersonTvCredit } f
 
 const resolvers = {
     Query: {
-        nowPlayMovies: (_,{page})=> getNowPlayMovies(page),
         movies: (_,{page,language,category}) => getMovies(page,language,category),
         movie: (_,{id})=> getMovie(id),
         searchMovies: (_,{page,language,term}) => getSearchMovies(page,language,term),
