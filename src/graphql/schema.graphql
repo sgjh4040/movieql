@@ -66,7 +66,7 @@ type Person {
     
 }
 type Video {
-    id:Int!
+    id:String!
     key: String
     site: String
     name: String
@@ -101,7 +101,7 @@ type Query{
     movies(page:Int,language:String,category:String): MovieList
     suggestions(id:Int!):[Movie]!
     credits(id:Int!):[Person]!
-    videos(id:Int!):[Video]!
+    videos(id:Int!):[Video]
     similars(id:Int!): [Movie]!
     keywords(id:Int!): [Keyword]!
     tvs(page:Int,language:String,category:String): TvList

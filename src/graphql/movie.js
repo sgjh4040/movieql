@@ -78,7 +78,7 @@ export const getCredits = async id =>{
 export const getVideos = async id =>{
     const {
         data:{
-            cast
+            results
         }
     }= await axios(`${API_URL}/movie/${id}/videos`,{
         params:{
@@ -86,7 +86,7 @@ export const getVideos = async id =>{
             language: "ko-kr"
         }
     });
-    return cast
+    return results
 }
 export const getImages = async id =>{
     const {
