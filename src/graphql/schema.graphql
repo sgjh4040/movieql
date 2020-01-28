@@ -115,5 +115,6 @@ type Query{
     person(id:Int!, language:String): Person!
     personMovieCredits(id:Int!, language:String): [Movie]
     personTvCredits(id:Int!, language:String): [Tv]
+    personPopular(page: Int, language: String): [Person]!
     
 }

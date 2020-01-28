@@ -62,3 +62,18 @@ export const getSearchPeople = async (page=1,language='ko-kr',term) =>{
     });
     return results;
 }
+export const getPopularPeople = async (page=1,language='ko-kr') =>{
+    const {
+        data:{
+            results
+        }
+    }= await axios(`${API_URL}/person/popular`,{
+        params:{
+            api_key:process.env.moviedbAPI,
+            page,
+            language,
+        }
+    });
+    console.log(results);
+    return results;
+}
